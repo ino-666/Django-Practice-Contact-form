@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+from distutils import config # type: ignore
 import environ # type: ignore
 from pathlib import Path
 
@@ -66,6 +67,7 @@ ROOT_URLCONF = 'conf.urls'
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+        #プロジェクト直下にあるtemplatesフォルダを利用するように設定
         "DIRS": [os.path.join(BASE_DIR, 'templates')], # django_basic/templates を利用する
         "APP_DIRS": True,
         "OPTIONS": {
@@ -86,7 +88,14 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db(),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DATABASE_NAME'),
+        'USER': config('DATABASE_USER'),
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'HOST': config('DATABASE_HOST'),
+        'PORT': '',
+    }
 }
 
 
