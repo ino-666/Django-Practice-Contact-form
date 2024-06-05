@@ -42,7 +42,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
-    'contacts.apps.ContactsConfig',
+    'contacts',
     'crud.apps.CrudConfig',
     'django.contrib.admin',
     'django.contrib.auth',
