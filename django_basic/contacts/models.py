@@ -35,6 +35,7 @@ class BaseContact(models.Model):
  
         CustomUser.email_users(CustomUser.get_users_emailed(), subject, message, from_email)
 
+
 class IndividualContact(BaseContact):
     fullname = models.CharField(verbose_name='氏名', blank=False, max_length=30)
     kana = models.CharField(verbose_name='フリガナ', blank=False, max_length=60)
