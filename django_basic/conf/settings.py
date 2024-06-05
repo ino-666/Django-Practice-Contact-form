@@ -152,3 +152,8 @@ AUTH_USER_MODEL = 'accounts.CustomUser'#accounts　アプリのCustomUserに登�
  
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'no-reply@internetacademy.co.jp'#Djangoから送信されるメールに設定する
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.AllowAllUsersModelBackend',
+)
